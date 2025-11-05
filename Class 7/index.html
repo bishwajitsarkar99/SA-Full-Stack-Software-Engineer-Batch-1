@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounce vs Throttle Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .example {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .search-container {
+            margin: 20px 0;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        .results {
+            margin-top: 10px;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            min-height: 60px;
+            background-color: #f9f9f9;
+            font-family: monospace;
+        }
+        .input-time {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+            min-height: 18px;
+        }
+        .info {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .debounce-example {
+            border-left: 4px solid #4CAF50;
+        }
+        .throttle-example {
+            border-left: 4px solid #2196F3;
+        }
+        .code {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Debounce vs Throttle Examples</h1>
+    <p>Compare how debounce and throttle handle rapid events differently.</p>
+    
+    <!-- Debounce Example -->
+    <div class="example debounce-example">
+        <h2>Debounce Example</h2>
+        <p>Waits until the user stops typing for 500ms before executing.</p>
+        
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Type here to see debounce in action...">
+            <div class="input-time" id="debounce-input-time"></div>
+            <div class="results" id="results">Debounced results will appear here</div>
+        </div>
+        
+        <div class="info">
+            <h3>Debouncing</h3>
+            <p>Debouncing ensures that a function is only executed after a certain amount of time has passed since it was last called. This is useful for search inputs, window resizing, or auto-saving.</p>
+            <div class="code">function debounce(func, wait) {
+  let timeoutId;
+  return function(...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(this, args);
+    }, wait);
+  };
+}</div>
+        </div>
+    </div>
+
+    <!-- Throttle Example -->
+    <div class="example throttle-example">
+        <h2>Throttle Example</h2>
+        <p>Limits execution to once every 1000ms (1 second) while you're typing.</p>
+        
+        <div class="search-container">
+            <input type="text" id="throttle-input" placeholder="Type here to see throttle in action...">
+            <div class="input-time" id="throttle-input-time"></div>
+            <div class="results" id="throttle-results">Throttled results will appear here</div>
+        </div>
+        
+        <div class="info">
+            <h3>Throttling</h3>
+            <p>Throttling ensures a function is called at most once in a specified time interval, no matter how many times the event is triggered. Useful for scroll events, mouse movements, or window resizing.</p>
+            <div class="code">function throttle(func, limit) {
+  let lastCall = 0;
+  return function(...args) {
+    const now = Date.now();
+    if (now - lastCall >= limit) {
+      lastCall = now;
+      return func.apply(this, args);
+    }
+  };
+}</div>
+        </div>
+    </div>
+
+    <div class="info">
+        <h3>Key Differences</h3>
+        <p><strong>Debounce</strong> groups multiple sequential calls into a single one. It's like waiting for someone to finish speaking before responding.</p>
+        <p><strong>Throttle</strong> ensures a function runs at most once per specified time interval. It's like a rate limiter that ensures a function doesn't run too often.</p>
+        <p>Open your browser's console to see detailed logs of when each function is called.</p>
+    </div>
+
+    <script src="debounce.js"></script>
+    <script src="throttle.js"></script>
+</body>
+</html>
