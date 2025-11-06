@@ -1,29 +1,28 @@
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import './App.css'
+import Skill from './components/Skill';
 
 const App = () => {
-  const name = "Suhan";
-  const age = 20;
   const skills = ["HTML", "CSS", "JS", "React"];
 
-  const showName = false;
+  const progress = "80%";
+
+  const handleClick = (number, e) => {
+    console.log('Clicked', e);
+  }
 
   return (
     <>
-     <div className='hello-world' >Hello World</div>
+     <h2>My Skills</h2>
 
-
-     {showName ? <p>Name: {name}</p> : <p>Name is hidden</p>}
-     <p>Age: {age}</p>
-     <p>Skills: {skills.join(", ")}</p>
-     <p>skill2 : {skills}</p>
+     <button onClick={(e) => handleClick(Math.random(), e)}>Click</button>
 
      <ul>
       {skills.map((skill, index) => (
-        <li key={index}>{skill}</li>
+        <Skill key={index} skill={skill} progress={progress} style={{ color: "red", fontSize: "24px" }} />
       ))}
      </ul>
+
+     
     </>
 
   )
