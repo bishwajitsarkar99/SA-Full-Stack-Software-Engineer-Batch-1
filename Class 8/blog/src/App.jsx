@@ -2,7 +2,7 @@ import { useState } from "react";
 import Blog from "./components/Blog";
 
 export default function App() {
-  const [blogs, setBlog] = useState([
+  const [blogs, setBlogs] = useState([
     {
       id: 1,
       title: "Blog 1",
@@ -31,12 +31,12 @@ export default function App() {
   const [author, setAuthor] = useState("");
 
   const deleteBlog = (id) => {
-    setBlog(blogs.filter((item) => item.id !== id));
+    setBlogs(blogs.filter((item) => item.id !== id));
   };
 
   const addBlog = (e) => {  
     e.preventDefault();
-    setBlog([
+    setBlogs([
       ...blogs,
       {
         id: blogs.length + 1,
@@ -58,16 +58,18 @@ export default function App() {
       {/* todo:: search blog */}
       <input
         type="text"
+        name="search"
         placeholder="Search blogs..."
         className="border border-gray-300 rounded-md px-4 py-2 mr-2 my-4"
       />
       {/* extract this part into a separate component */}
       <div className="border border-gray-300 rounded-md p-4 my-4">
-        <form className="flex items-center flex-col space-y-2">
+        <form className="flex items-center flex-col space-y-2" onSubmit={addBlog}>
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             type="text"
+            name="title"
             placeholder="Blog title"
             className="border border-gray-300 rounded-md px-4 py-2 mr-2"
           />
@@ -76,6 +78,7 @@ export default function App() {
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
             type="text"
+            name="author"
             placeholder="Author"
             className="border border-gray-300 rounded-md px-4 py-2 mr-2"
           />
@@ -83,12 +86,13 @@ export default function App() {
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
+            name="content"
             placeholder="Blog content"
             className="border border-gray-300 rounded-md px-4 py-2 mr-2"
           />
 
           {/* todo:: conditionally active/inactive add button */}
-          <button onClick={(e) => addBlog(e)} className="bg-[#007bff] text-white px-4 py-2 rounded-md cursor-pointer">
+          <button type="submit" className="bg-[#007bff] text-white px-4 py-2 rounded-md cursor-pointer">
             Add New Blog
           </button>
         </form>
