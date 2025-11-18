@@ -10,6 +10,7 @@ const initialState = {
       zip: '12345',
     },
   ],
+  count: 1,
 }
 
 export const counterSlice = createSlice({
@@ -22,9 +23,12 @@ export const counterSlice = createSlice({
     removeAddress: (state, action) => {
       state.addresses = state.addresses.filter((address) => address.id !== action.payload)
     },
+    increment: (state) => {
+      state.count += 1
+    },
   },
 })
 
-export const { addAddress, removeAddress } = counterSlice.actions
+export const { addAddress, removeAddress, increment } = counterSlice.actions
 
 export default counterSlice.reducer

@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css'
-import { addAddress } from '../counterSlice';
+import { addAddress, increment } from '../counterSlice';
 
 function App() {
- const { addresses } = useSelector((state) => state.addressReducer);
+ const { addresses, count } = useSelector((state) => state.addressReducer);
 
  const dispatch = useDispatch();
 
@@ -17,6 +17,10 @@ function App() {
           <p>{address.postalCode}</p>
         </div>
       ))}
+
+      count {count}
+
+      <button onClick={() => dispatch(increment())}>Increment</button>
 
           <button
           onClick={() =>
