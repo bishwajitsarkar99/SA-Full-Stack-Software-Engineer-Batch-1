@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "ABC product 1",
+    "price": 100,
+    "description": "product 1 description",
+    "category": "product 1 category",
+    "url": "https://nodemon.io/"
+  },
+  {
+    "id": 2,
+    "name": "DEF product 2",
+    "price": 200,
+    "description": "product 2 description",
+    "category": "product 2 category",
+    "url": "https://nodemon.io/"
+  },
+  {
+    "id": 3,
+    "name": "GHI product 3",
+    "price": 300,
+    "description": "product 3 description",
+    "category": "product 3 category",
+    "url": "https://nodemon.io/"
+  },
+  {
+    "id": 4,
+    "name": "ABC product 4",
+    "price": 400,
+    "description": "product 4 description",
+    "category": "product 4 category",
+    "url": "https://nodemon.io/"
+  },
+  {
+    "id": 5,
+    "name": "DEF product 5",
+    "price": 500,
+    "description": "product 5 description",
+    "category": "product 5 category",
+    "url": "https://nodemon.io/"
+  },
+  {
+    "id": 6,
+    "name": "LINKON",
+    "price": 400,
+    "description": " ABC description",
+    "category": "product abc category",
+    "url": "https://nodemon.io/"
+  },
+  {
+    "id": 7,
+    "name": "Product 2 LINKON",
+    "price": 4003,
+    "description": " ABC description",
+    "category": "product abc category",
+    "url": "https://nodemon.io/"
+  },
+  {
+    "id": 8,
+    "name": "Product 3 LINKON",
+    "price": 4003,
+    "description": " ABC description",
+    "category": "product abc category",
+    "url": "https://nodemon.io/"
+  }
+]
