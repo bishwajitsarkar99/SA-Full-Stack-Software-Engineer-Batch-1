@@ -37,7 +37,7 @@ app.get('/products', (req, res) => {
                 product => product.name.toLowerCase().includes(name)
             )
             console.log('filter by name', filteredDate)
-            res.json(filteredDate)
+            res.status(200).json(filteredDate)
         } else {
             res.json(data)
         }
