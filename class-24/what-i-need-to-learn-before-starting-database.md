@@ -83,7 +83,7 @@
 19. validation and error handling 
 20. authentication and authorization
 
----------- scaling / Optimization ----------
+---------- scaling / optimization ----------
 
     - Horizontal Scaling: Adding more servers to handle increased load
     - Vertical Scaling: Upgrading existing server hardware
