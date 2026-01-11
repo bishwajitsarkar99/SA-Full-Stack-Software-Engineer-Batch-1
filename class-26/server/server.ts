@@ -1,7 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-
+import cors from 'cors';
+import { appointmentSchema, doctorSchema, serviceSchema, userSchema } from './schema';
 
 // Load environment variables
 dotenv.config();
@@ -11,80 +12,55 @@ const PORT = process.env.PORT || 5001;
 
 // Middleware
 app.use(express.json());
+app.use(cors())
+
 
 // MongoDB Connection
-// const mongoURI = "mongodb+srv://admindoctor:passworddoctor@cluster0.6xo8c1s.mongodb.net/hospital?retryWrites=true&w=majority";
 const mongoURI = "mongodb+srv://connectionuser:connectionpassword@cluster0.azxufzl.mongodb.net/connection?retryWrites=true&w=majority";
 mongoose.connect(mongoURI)
     .then(() => console.log('MongoDB connected'))
     .catch((err) => console.error('MongoDB connection error:', err));
 
-// Schemas
-// const doctorSchema = new mongoose.Schema({
-//     id: { type: Number, required: true, unique: true },
-//     name: { type: String, required: true },
-//     specialty: { type: String, required: true },
-//     experience: { type: String, required: true },
-//     location: { type: String, required: true },
-//     image: { type: String, required: true },
-//     available: { type: String, required: true },
-//     time: { type: String, required: true },
-//     bio: { type: String, required: true },
-//     education: [{ type: String }],
-//     services: [{ type: String }],
-//     createdAt: { type: Date, default: Date.now }
-// });
-
-// const serviceSchema = new mongoose.Schema({
-//     id: { type: Number, required: true, unique: true },
-//     title: { type: String, required: true },
-//     description: { type: String, required: true },
-//     icon: { type: String, required: true },
-//     detailedDescription: { type: String, required: true },
-//     doctors: [{ type: Number }],
-//     createdAt: { type: Date, default: Date.now }
-// });
-
-const userSchema = new mongoose.Schema({
-    id: { type: Number, required: true, unique: true },
-    name: { type: String }
-})
 
 // Models
-// const Doctor = mongoose.model('Doctor', doctorSchema);
-// const Service = mongoose.model('Service', serviceSchema);
 const User = mongoose.model('User', userSchema)
-// product model user mode review model
+const Doctor = mongoose.model('Doctor', doctorSchema)
+const Service = mongoose.model('Service', serviceSchema)
+const Appointment = mongoose.model('Appointment', appointmentSchema)
+
 // Basic route
 app.get('/', (_req, res) => {
     res.json({ message: 'Server is running Working!' });
 });
 
-app.get('/user', async (req, res) => {
+// user route GET, POST, PUT, DELETE
+app.get('/api/user', async (req, res) => {
     const user = await User.find({});
     if (!user) res.json({
         status: '404',
         message: 'there is no user data'
     })
     res.json({
-        data: user, message: 'user data fetch sucessfully '
+        status: 'success',
+        message: 'user data fetch sucessfully ',
+        data: user
     })
 })
 
-app.post('/user', async (req, res) => {
-    const { name } = req.body;
+app.post('/api/user', async (req, res) => {
+    const { name, email, phone } = req.body;
     console.log('name:', name)
-    if (!name) res.status(400).json({
+    if (!name && !email && !phone) res.status(400).json({
         status: '',
         message: "name not found"
     })
     const user = new User({
         id: Date.now(),
-        name
+        name,
+        email,
+        phone
     })
-    console.log('user', user)
     const u = await user.save()
-    console.log('u', u)
     res.json({
         status: 'success',
         message: "User created successfully",
@@ -92,6 +68,146 @@ app.post('/user', async (req, res) => {
     })
 })
 
+app.put('/api/user', async (req, res) => {
+    const { id, name, email, phone } = req.body;
+    if (!name && !email && !phone) res.status(400).json({
+        status: '',
+        message: "name not found"
+    })
+    console.log("id", id)
+    const user = await User.findByIdAndUpdate(id, { name, email, phone })
+    console.log("user", user)
+    res.json({
+        status: 'success',
+        message: "User updated successfully",
+        data: user
+    })
+})
+
+app.delete('/api/user', async (req, res) => {
+    const { id } = req.body;
+    console.log("id", id)
+    const user = await User.findByIdAndDelete(id)
+    console.log("user", user)
+    res.json({
+        status: 'success',
+        message: "User deleted successfully",
+        data: user
+    })
+})
+
+// doctor route GET, POST, PUT, DELETE
+
+app.post('/api/doctor/uploadMany', async (req, res) => {
+    const doctors = req.body;
+    const doctor = await Doctor.insertMany(doctors)
+    res.json({
+        status: 'success',
+        message: "Doctors uploaded successfully",
+        data: doctor
+    })
+})
+
+app.get('/api/doctors/:id', async (req, res) => {
+    const id = req.params.id;
+    console.log("id", id)
+    const doctor = await Doctor.findById(id)
+    console.log("doctor", doctor)
+    if (!doctor) res.json({
+        message: 'Doctor not found'
+    })
+    res.json({
+        message: 'Doctor found',
+        data: doctor
+    })
+})
+
+app.get('/api/doctors', async (req, res) => {
+    const doctor = await Doctor.find({})
+    if (!doctor) res.json({
+        status: '404',
+        message: 'there is no doctor data'
+    })
+
+    res.json({
+        status: 'success',
+        data: doctor,
+        message: 'doctor data fetch successfully '
+    })
+})
+
+// service route GET , POST, PUT, DELETE = Try later with relationship
+// app.get('/api/services', async (req, res) => {
+//     const service = await Service.find({})
+//     if (!service) res.json({
+//         status: '404',
+//         message: 'there is no service data'
+//     })
+//     res.json({
+//         status: 'success',
+//         message: 'service fetch successfully ',
+//         data: service
+//     })
+// })
+
+// appointment GET, POST, PUT, DELETE
+app.get('/api/apointment', async (req, res) => {
+    const appointment = await Appointment.find({});
+    if (!appointment) res.json({
+        status: '404',
+        message: 'there is no appointment data'
+    })
+    res.json({
+        status: 'success',
+        message: 'appointment fetch successfully ',
+        data: appointment
+    })
+})
+
+
+app.get('/api/apointment/:id', async (req, res) => {
+    const id = req.params.id;
+    const appointment = await Appointment.findById(id);
+    if (!appointment) res.json({
+        status: '404',
+        message: 'there is no appointment data'
+    })
+    res.json({
+        status: 'success',
+        message: 'appointment fetch successfully ',
+        data: appointment
+    })
+})
+
+app.post('/api/apointment', async (req, res) => {
+    const { name, email, phone, reason, time, doctorId, date, service } = req.body;
+    console.log("name", name)
+    console.log("email", email)
+    console.log("phone", phone)
+    console.log("reason", reason)
+    console.log("time", time)
+    console.log("doctorId", doctorId)
+    console.log("date", date)
+    console.log("service", service)
+
+    res.send("ok");
+
+    // if (!name && !email && !phone) res.json({
+    //     status: '404',
+    //     message: 'there is no appointment data'
+    // })
+    // const appointment = new Appointment({
+    //     name,
+    //     email,
+    //     phone
+    // })
+    // const a = await appointment.save()
+    // res.json({
+    //     status: 'success',
+    //     message: 'appointment fetch successfully ',
+    //     data: a
+    // })
+})
 
 
 app.listen(PORT, () => {
