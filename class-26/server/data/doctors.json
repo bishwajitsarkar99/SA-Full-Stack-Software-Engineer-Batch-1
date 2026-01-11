@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "name": "Dr. Sarah Johnson",
+        "specialty": "Cardiologist",
+        "experience": "12 years",
+        "location": "Main Hospital, Floor 3",
+        "image": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&auto=format&fit=crop&q=60",
+        "available": "Mon, Wed, Fri",
+        "time": "9:00 AM - 5:00 PM",
+        "bio": "Specializing in interventional cardiology with over a decade of experience in treating complex heart conditions.",
+        "education": ["MD, Harvard Medical School", "Fellowship in Interventional Cardiology"],
+        "services": ["Cardiology", "Heart Health"]
+    },
+    {
+        "id": 2,
+        "name": "Dr. Michael Chen",
+        "specialty": "Cardiologist",
+        "experience": "10 years",
+        "location": "Main Hospital, Floor 3",
+        "image": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=60",
+        "available": "Tue, Thu, Sat",
+        "time": "10:00 AM - 6:00 PM",
+        "bio": "Specializing in cardiology with over a decade of experience in treating complex heart conditions.",
+        "education": ["MD, Johns Hopkins School of Medicine", "Fellowship in Cardiology"],
+        "services": ["Cardiology", "Heart Health"]
+    },
+    {
+        "id": 3,
+        "name": "Dr. Emily Rodriguez",
+        "specialty": "Dentist",
+        "experience": "8 years",
+        "location": "Dental Clinic, Floor 2",
+        "image": "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&auto=format&fit=crop&q=60",
+        "available": "Mon, Wed, Fri",
+        "time": "8:00 AM - 4:00 PM",
+        "bio": "Specializing in general dentistry with expertise in cosmetic procedures and preventive care.",
+        "education": ["MD, University of California, San Francisco", "Fellowship in Dentistry"],
+        "services": ["Dental Care", "Oral Health"]
+    },
+    {
+        "id": 4,
+        "name": "Dr. David Kim",
+        "specialty": "Dentist",
+        "experience": "9 years",
+        "location": "Dental Clinic, Floor 2",
+        "image": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&auto=format&fit=crop&q=60",
+        "available": "Mon, Wed, Fri",
+        "time": "9:00 AM - 5:00 PM",
+        "bio": "Specializing in pediatric dentistry with a focus on children's oral health and preventive care.",
+        "education": ["MD, University of California, San Francisco", "Fellowship in Pediatric Dentistry"],
+        "services": ["Dental Care", "Pediatrics"]
+    },
+    {
+        "id": 5,
+        "name": "Dr. Lisa Thompson",
+        "specialty": "Neurologist",
+        "experience": "11 years",
+        "location": "Main Hospital, Floor 4",
+        "image": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&auto=format&fit=crop&q=60",
+        "available": "Mon, Wed, Fri",
+        "time": "8:00 AM - 4:00 PM",
+        "bio": "Specializing in neurology with expertise in treating complex neurological disorders and brain conditions.",
+        "education": ["MD, Harvard Medical School", "Fellowship in Neurology"],
+        "services": ["Neurology", "Brain Health"]
+    },
+    {
+        "id": 6,
+        "name": "Dr. James Wilson",
+        "specialty": "Orthopedic Surgeon",
+        "experience": "15 years",
+        "location": "Main Hospital, Floor 5",
+        "image": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&auto=format&fit=crop&q=60",
+        "available": "Tue, Thu, Sat",
+        "time": "7:00 AM - 3:00 PM",
+        "bio": "Specializing in orthopedic surgery with expertise in joint replacements and sports medicine.",
+        "education": ["MD, Stanford University School of Medicine", "Fellowship in Orthopedic Surgery"],
+        "services": ["Orthopedics", "Bone Health"]
+    }
+]

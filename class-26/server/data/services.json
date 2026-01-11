@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "title": "Cardiology",
+        "description": "Comprehensive heart care with advanced diagnostic tools and treatments for all cardiac conditions.",
+        "icon": "heartbeat",
+        "detailedDescription": "Our cardiology department provides comprehensive heart care services including diagnostic testing, preventive cardiology, interventional procedures, and cardiac rehabilitation. Our team of board-certified cardiologists use the latest technology to diagnose and treat all types of heart conditions.",
+        "doctors": [1, 2]
+    },
+    {
+        "id": 2,
+        "title": "Dental Care",
+        "description": "Complete dental care services including cleaning, whitening, and cosmetic dentistry.",
+        "icon": "tooth",
+        "detailedDescription": "Our dental department provides comprehensive dental care services including diagnostic testing, preventive dentistry, restorative procedures, and cosmetic dentistry. Our team of board-certified dentists use the latest technology to diagnose and treat all types of dental conditions.",
+        "doctors": [3, 4]
+    },
+    {
+        "id": 3,
+        "title": "Neurology",
+        "description": "Comprehensive neurological care with advanced diagnostic tools and treatments for all neurological conditions.",
+        "icon": "brain",
+        "detailedDescription": "Our neurology department provides comprehensive neurological care services including diagnostic testing, preventive neurology, interventional procedures, and neurological rehabilitation. Our team of board-certified neurologists use the latest technology to diagnose and treat all types of neurological conditions.",
+        "doctors": [2, 5]
+    },
+    {
+        "id": 4,
+        "title": "Orthopedics",
+        "description": "Comprehensive orthopedic care with advanced diagnostic tools and treatments for all orthopedic conditions.",
+        "icon": "bone",
+        "detailedDescription": "Our orthopedics department provides comprehensive orthopedic care services including diagnostic testing, preventive orthopedics, interventional procedures, and orthopedic rehabilitation. Our team of board-certified orthopedic surgeons use the latest technology to diagnose and treat all types of orthopedic conditions.",
+        "doctors": [3, 6]
+    },
+    {
+        "id": 5,
+        "title": "Pediatrics",
+        "description": "Compassionate healthcare for infants, children, and adolescents in a child-friendly environment.",
+        "icon": "baby",
+        "detailedDescription": "Our pediatrics department provides comprehensive healthcare for infants, children, and adolescents. Our team of pediatricians and specialists create a child-friendly environment where your little ones can feel comfortable and safe. We offer preventive care, vaccinations, and treatment for common childhood illnesses.",
+        "doctors": [4, 5]
+    }
+]
